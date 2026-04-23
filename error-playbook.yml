@@ -1,0 +1,13 @@
+---
+- name: error handling practice
+  hosts: webservers
+  become: yes
+   
+  tasks: 
+    - name: fake folder check karo
+      command: ls /fake-folder
+      ignore_errors: yes
+
+    - name: ye task chalega
+      debug: 
+        msg: "main chal raha hoon ignore_errors ki wajah se!"

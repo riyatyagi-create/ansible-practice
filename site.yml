@@ -1,0 +1,7 @@
+---
+- name: nginx role use karo 
+  hosts: webservers
+  become: yes
+
+  roles:
+    - nginx

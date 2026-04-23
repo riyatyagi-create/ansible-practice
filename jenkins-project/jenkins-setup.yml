@@ -1,0 +1,24 @@
+---
+- name: jenkins setup
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: java install karo
+      apt:
+        name: openjdk-17-jdk
+        state: present
+        update_cache: yes
+    - name: jenkins key add karo
+      shell: curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | tee /usr/share/keyrings/jenkins-keyrings.asc
+    - name: jenkins repo add karo
+      shell: echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/ | tee /etc/apt/sources.list.d/jenkins.list
+    - name: jenkins install karo
+      apt:
+        name: jenkins
+        state: present
+        update_cache: yes
+    - name: jenkins start karo
+      service:
+        name: jenkins
+        state: started
+        enabled: yes

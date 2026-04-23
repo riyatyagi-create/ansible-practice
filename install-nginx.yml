@@ -1,0 +1,15 @@
+---
+- name: nginx install karo
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: nginx install karo
+      apt:
+        name: nginx
+        state: present
+
+    - name: nginx start karo
+      service:
+        name: nginx
+        state: started

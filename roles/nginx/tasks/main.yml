@@ -1,0 +1,13 @@
+---
+# tasks file for roles/nginx
+# ---
+# - name: nginx install karo
+#   apt: 
+#     name: nginx
+#     state: present
+#   notify: nginx restart karo
+#
+# - name: nginx start karo
+#   service: 
+#     name: nginx
+#     state: started

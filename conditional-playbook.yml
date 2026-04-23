@@ -1,0 +1,17 @@
+---
+- name: conditional practice
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: ubuntu pe nginx install karo
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "debian"
+
+    - name: centos pe nginx install karo
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "redhat"

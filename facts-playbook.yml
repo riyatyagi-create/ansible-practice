@@ -1,0 +1,16 @@
+---
+- name: facts practice 
+  hosts: webservers
+
+  tasks: 
+    - name: os family batao
+      debug:
+        msg: "os hai: {{ ansible_os_family }}"
+
+    - name: hostname batao
+      debug:
+        msg: "server naam hai: {{ ansible_hostname }}"
+
+    - name: ip batao
+      debug:
+        msg: "ip hai: {{ ansible_default_ipv4.address }}"

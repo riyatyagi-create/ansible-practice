@@ -1,0 +1,7 @@
+---
+- name: meri pehli playbook
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: ping karo
+      ping:

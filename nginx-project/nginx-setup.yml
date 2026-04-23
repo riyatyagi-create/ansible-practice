@@ -1,0 +1,35 @@
+---
+- name: nginx complete setup
+  hosts: webservers
+  become: yes
+  vars: 
+    http_port: 80
+    server_name: mywebsite.com
+
+  tasks:
+    - name: nginx install karo
+      apt:
+        name: nginx
+        state: present
+      notify: nginx restart karo
+
+    - name: config copy karo
+      template: 
+        src: nginx.conf.j2
+        dest: /etc/nginx/conf.d/mysite.conf
+      notify: nginx restart karo
+
+    - name: index page copy akro
+      template: 
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: nginx start karo
+      service:
+        name: nginx
+        state: started
+
+  handlers:
+    - name: nginx restart karo
+      service:
+        name: nginx
+        state: restarted

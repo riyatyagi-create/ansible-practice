@@ -1,0 +1,20 @@
+---
+- name: server setup karo
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: system update karo
+      apt: 
+        update_cache: yes
+
+    - name: git install karo
+      apt: 
+        name: git
+        state: present
+
+    - name: tree install karo
+      apt:
+        name: tree
+        state: present
+   

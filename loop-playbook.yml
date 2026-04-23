@@ -1,0 +1,15 @@
+---
+- name: loop practice
+  hosts: webservers
+  become: yes
+
+  tasks: 
+    - name: multiple packages install karo
+      apt: 
+        name: "{{ item }}"
+        state: present
+      loop: 
+       - git
+       - tree
+       - curl
+       - wget

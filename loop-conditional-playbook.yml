@@ -1,0 +1,16 @@
+---
+- name: loop + conditional practice
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: ubuntu pe package install karo 
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: 
+        - git
+        - curl 
+        - wget
+      when: ansible_os_family == "debian"
+

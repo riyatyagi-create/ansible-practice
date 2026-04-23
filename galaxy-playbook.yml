@@ -1,0 +1,8 @@
+---
+- name: galaxy nginx install
+  hosts: webservers
+  become: yes
+     
+
+  roles: 
+    - geerlingguy.nginx

@@ -1,0 +1,18 @@
+---
+- name: jinja2 template practice
+  hosts: webservers
+  become: yes
+  vars:
+    http_port: 80
+    server_name: mywebsite.com
+
+  tasks: 
+    - name: nginx config copy karo
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/conf.d/mysite.conf
+
+    - name: nginx restart karo
+      service: 
+        name: nginx
+        state: restarted

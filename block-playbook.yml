@@ -1,0 +1,19 @@
+---
+- name: block rescue practice
+  hosts: webservers
+  become: yes
+
+  tasks: 
+    - block:
+        - name: fake folder check karo
+          command: ls /fake-folder
+
+      rescue:
+         - name: error handle karo 
+           debug: 
+             msg: "error aaya! handle kar liya!"
+
+      always: 
+          - name: hamesha chalega
+            debug:
+              msg: "main hamesha chalta hoon!"
