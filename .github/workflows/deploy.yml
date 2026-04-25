@@ -1,31 +1,30 @@
----
-name: deploy with ansible
+name: Deploy with Ansible
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
-jobs: 
-  deploy: 
+jobs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: code checkout karo
+      - name: Code checkout karo
         uses: actions/checkout@v2
 
-      - name: ansible install karo
-        run: pip install ansible 
+      - name: Ansible install karo
+        run: pip install ansible
 
-      - name: SSH key setup karo
+      - name: SSH Key setup karo
         run: |
           mkdir -p ~/.ssh
-          echo  "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-      - name: inventory banao
+      - name: Inventory banao
         run: |
           echo "[webservers]" > inventory.ini
           echo "${{ secrets.SERVER_IP }} ansible_user=ansible ansible_ssh_private_key_file=~/.ssh/id_rsa" >> inventory.ini
 
-        - name: ansible playbook chalao 
-          run:  ansible-playbook -i inventory.ini install-nginx.yml
+      - name: Ansible Playbook chalao
+        run: ansible-playbook -i inventory.ini install-nginx.yml
