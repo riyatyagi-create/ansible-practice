@@ -1,0 +1,4 @@
+---
+app_name: myapp
+web_root: /var/www/html
+package_name: nginx

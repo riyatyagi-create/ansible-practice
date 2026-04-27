@@ -1,0 +1,5 @@
+---
+- name: Nginx Restart Karo
+  service: 
+    name: nginx
+    state: restarted

@@ -1,0 +1,26 @@
+---
+- name: Nginx install karo
+  apt:
+    name: "{{ package_name }}"
+    state: present
+    update_cache: yes
+  notify: Nginx Restart Karo
+
+- name: web directory banao
+  file: 
+    path: "{{ web_root }}"
+    state: directory
+    mode: '0755'
+
+- name: Index page deploy karo
+  template: 
+    src: index.html.j2
+    dest: "{{ web_root }}/index.html"
+    mode: '0644'
+  notify: Nginx Restart Karo
+
+- name: nginx start karo
+  service: 
+    name: "{{ package_name }}"
+    state: started
+    enabled: yes

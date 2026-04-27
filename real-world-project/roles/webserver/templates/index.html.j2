@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ server_name }}</title>
+</head>
+<body>
+    <h1>welcome to {{ server_name }]!</h1>
+    <p>Server: {{ ansible_hostname }}</p>
+    <p>IP: {{ ansible_default_ipv4.address }}</p>
+    <p>Deployed by ansible!</p>
+</body>
+</html>

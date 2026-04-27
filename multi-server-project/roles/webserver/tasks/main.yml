@@ -1,0 +1,11 @@
+---
+- name: nginx install karo 
+  apt:
+    name: "{{ package_name }}"
+    state: present
+    update_cache: yes
+- name: nginx start karo
+  service:
+    name: "{{ package_name }}"
+    state: started
+    enabled: yes

@@ -1,0 +1,7 @@
+---
+- name: Complete Devops Pipeline Deploy
+  hosts: webservers
+  become: yes
+
+  roles: 
+    - deploy
